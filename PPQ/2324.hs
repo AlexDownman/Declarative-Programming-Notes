@@ -17,17 +17,32 @@ calcFinalGrade exam cw lab = round (
                              + (fromIntegral lab * 0.15))
 
 {-
+    c)
     i) polymorphic is a function that takes in any type
     ii) higher-order is a function which takes a function as an arguement
 
     One example is map
+
+    d)
+    i) myPair = ("abc", "de")       Yes myPair :: (String, String)
+    ii) tryCycle (x:xs) = xs ++ x   No
+    iii) add11 = 1 + True           No 
+    iv) f a b = a ++ (reverse b)    Yes f:: [a] -> [a] -> [a]
+
+    e)
+    i) putStrLn :: String -> IO ()
+    ii) when you call repeatAndCount 0 , it takes in user input and checks if its equal to ":q" to exit the function, 
+        otherwise it recursively starts the program again with n + length of user input. Terminates on the ":q" condition.
+    iii) if you input "a" then ":q" it results in one recursive call
+
+
 -}
 
 -- f
 data BTree a = Leaf a | BNode (BTree a) a (BTree a)
 
 isHeapRec :: Ord a => a -> BTree a -> Bool
-isHeapRec m (Leaf n) = True
+isHeapRec m (Leaf n) = m > n
 isHeapRec m (BNode l n r) = m > n && isHeapRec m l && isHeapRec m r
 
 isHeap :: Ord a => BTree a -> Bool
