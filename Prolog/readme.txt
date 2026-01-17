@@ -3,3 +3,4 @@ Basics.pl
 Unification.pl
 Recursion.pl
 Lists.pl
+Arithmetic.pl
