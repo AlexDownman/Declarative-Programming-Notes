@@ -28,5 +28,22 @@ main = do {
 }
 
 -- d)
-maximalOrderedSublist :: Ord a -> [a] -> [a] -> [a]
-maximalOrderedSublist l r = r
+maximalOrderedSublist :: Ord a => [a] -> [a]
+maximalOrderedSublist [] = []
+maximalOrderedSublist [a] = [a]
+maximalOrderedSublist (x:n:xs) | x <= n =  x : (maximalOrderedSublist (n:xs))
+                               | otherwise = (maximalOrderedSublist (x:xs))
+
+-- e)
+
+data Tree a = Leaf a | Node a [Tree a]
+leaf :: a -> Tree a
+leaf x = Node x []
+
+isLeaf :: Tree a -> Bool
+isLeaf (Node _ []) = True
+isLeaf _           = False
+
+trimLeaves :: Tree a -> Tree a
+trimLeaves (Leaf a) = leaf a
+trimLeaves (Node l r) = Node l (map trimLeaves (filter (not . isLeaf) r))
