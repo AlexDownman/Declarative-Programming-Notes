@@ -3,7 +3,6 @@
 -}
 
 -- a)
-
 billSplit :: Float -> Float -> Float -> Float
 billSplit alice eve bill
     | (alice - bill) >= eve = bill
@@ -23,7 +22,7 @@ main = do {
     putStrLn "Please Input String " ;
     x <- getLine ;
     if x == "Bye"
-        then putStrLn "" ;
+        then return ()
         else do { 
             putStrLn "Hi" ; main
         }
@@ -37,7 +36,6 @@ maximalOrderedSublist (x:n:xs) | x <= n =  x : maximalOrderedSublist (n:xs)
                                | otherwise = maximalOrderedSublist (x:xs)
 
 -- e)
-
 data Tree a = Leaf a | Node a [Tree a]
 leaf :: a -> Tree a
 leaf x = Node x []
