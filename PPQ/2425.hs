@@ -4,10 +4,10 @@
 
 -- a)
 
-billSplit :: Float -> Float -> Float -> (Float, Float, Float)
-billSplit alice eve bill = if eve - bill > alice then (alice, eve-bill, bill)
-                           else (alice-((bill - (eve-alice)) / 2),
-                            eve-((bill - (eve-alice)) / 2), bill)
+billSplit :: Float -> Float -> Float -> Float
+billSplit alice eve bill
+    | (alice - bill) >= eve = bill
+    | otherwise             = alice - ((alice + eve - bill) / 2)
 
 {-
     b)
@@ -22,17 +22,19 @@ main :: IO ()
 main = do {
     putStrLn "Please Input String " ;
     x <- getLine ;
-    if x == "Bye" 
+    if x == "Bye"
         then putStrLn "" ;
-        else do putStrLn "Hi" ; main
+        else do { 
+            putStrLn "Hi" ; main
+        }
 }
 
 -- d)
 maximalOrderedSublist :: Ord a => [a] -> [a]
 maximalOrderedSublist [] = []
 maximalOrderedSublist [a] = [a]
-maximalOrderedSublist (x:n:xs) | x <= n =  x : (maximalOrderedSublist (n:xs))
-                               | otherwise = (maximalOrderedSublist (x:xs))
+maximalOrderedSublist (x:n:xs) | x <= n =  x : maximalOrderedSublist (n:xs)
+                               | otherwise = maximalOrderedSublist (x:xs)
 
 -- e)
 
