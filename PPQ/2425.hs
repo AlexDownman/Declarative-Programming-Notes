@@ -6,7 +6,7 @@
 billSplit :: Float -> Float -> Float -> Float
 billSplit alice eve bill
     | (alice - bill) >= eve = bill
-    | otherwise             = alice - ((alice + eve - bill) / 2)
+    | otherwise             = (alice + eve - bill) / 2
 
 {-
     b)
@@ -23,7 +23,7 @@ main = do {
     x <- getLine ;
     if x == "Bye"
         then return ()
-        else do { 
+        else do {
             putStrLn "Hi" ; main
         }
 }
