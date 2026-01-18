@@ -27,6 +27,7 @@ listensToMusic(yolanda) :- happy(yolanda).
 
 % :- means if
 % facts separated by ',' are similar to AND operators
+% facts separated by ';' are similar to OR operators
 
 happy(vincent).
 listensToMusic(butch).
