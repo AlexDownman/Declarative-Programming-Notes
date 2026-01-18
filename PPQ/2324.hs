@@ -10,7 +10,7 @@
 
 -- b)
 
-calcFinalGrade :: (Integral a) => a -> a -> a -> a
+calcFinalGrade :: Int -> Int -> Int -> Int
 calcFinalGrade exam cw lab = round (
                              (fromIntegral exam * 0.70)
                              + (fromIntegral cw * 0.15)
